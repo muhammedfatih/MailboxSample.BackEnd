@@ -1,0 +1,10 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 as build-project
+#ENV ASPNETCORE_ENVIRONMENT=Development
+WORKDIR /app
+COPY ./ ./
+RUN dotnet restore
+RUN dotnet publish -c Release -o /publish
+
+#FROM mcr.microsoft.com/dotnet/core/runtime:3.1
+#COPY --from=build-project /publish /publish
+ENTRYPOINT dotnet /publish/MailBoxSample.MailAPI.dll $ASPNETCORE_ENVIRONMENT
