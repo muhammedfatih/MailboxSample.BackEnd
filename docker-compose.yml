@@ -21,9 +21,11 @@ services:
         volumes:
             - ./MailBoxSample.MailAPI/appsettings.json:/publish/appsettings.json
             - ./MailBoxSample.MailAPI/appsettings.development.json:/publish/appsettings.development.json
+            - ./MailBoxSample.MailAPI/appsettings.json:/app/appsettings.json
+            - ./MailBoxSample.MailAPI/appsettings.development.json:/app/appsettings.development.json
         environment:
-            ASPNETCORE_ENVIRONMENT: "${ASPNETCORE_ENVIRONMENT-development}"
             ASPNETCORE_URLS: https://localhost:5001+;http://localhost:5000+;
+            ASPNETCORE_ENVIRONMENT: "${ASPNETCORE_ENVIRONMENT-development}"
         links:
             - mysql
         depends_on:

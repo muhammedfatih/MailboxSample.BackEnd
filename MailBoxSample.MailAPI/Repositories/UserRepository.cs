@@ -5,6 +5,7 @@ using MailBoxSample.MailAPI.Entities;
 using Microsoft.Extensions.Options;
 using Serilog;
 using Dapper;
+using System;
 
 namespace MailBoxSample.MailAPI.Repositories
 {

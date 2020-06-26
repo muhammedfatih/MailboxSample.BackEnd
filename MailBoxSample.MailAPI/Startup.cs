@@ -16,6 +16,7 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace MailBoxSample.MailAPI
 {
@@ -25,6 +26,9 @@ namespace MailBoxSample.MailAPI
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", false, true);
+            Configuration = builder.Build();
+
         }
         public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
